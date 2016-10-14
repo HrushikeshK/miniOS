@@ -1,23 +1,12 @@
+#include "../drivers/screen.h"
+
 void main() {
-	char* video_memory = (char*) 0xb8000;
-	const char* msg = "Kernel Loaded";
-
-	int i = 0;
-  	int j = 0;
-
-	while(i < 80 * 35 * 2) {
-    	video_memory[i] = ' ';
-    	video_memory[i+1] = 0x00;
-    	i += 2;
-  }
-
-  i = 0;
-  j = 0;
-
-  while(msg[j] != '\0'){
-  	video_memory[i] = msg[j];
-  	video_memory[i+1] = 0x04;	 // Red color with black background
-  	j++;
-  	i += 2;
-  }
-}
+ // clear_screen();
+  kprint("\nKernel loaded\n");
+  kprint("Hello world!\n");
+  // kprint("Hello world\n");
+  // kprint_at("X", 1, 6);
+  // kprint_at("This Text spans multiple lines", 75, 10);
+  // kprint_at("There is line\nbreak", 0, 20);
+  // kprint_at("What happens when we run out of space?", 45, 24);
+ }

@@ -35,7 +35,7 @@ load_kernel:
 	call print_nl
 
 	mov bx, KERNEL_OFFSET
-	mov dh, 1		; Load first sector (excluding boot sector)
+	mov dh, 3		; Load n sectors (excluding boot sector)
 	mov dl, [BOOT_DRIVE]
 	call disk_load
 
@@ -46,6 +46,7 @@ load_kernel:
 ; Beginning of protected mode
 BEGIN_PM:
 	mov ebx, MSG_PROT_MODE
+	mov ecx, 320	; Offset- 3rd row
 	call print_string_pm
 
 	call KERNEL_OFFSET		; jump to position where our kernel is loaded
@@ -55,7 +56,7 @@ BEGIN_PM:
 	BOOT_DRIVE db 0
 	MSG_LOAD_KERNEL db "Loading kernel into memory", 0
 	MSG_REAL_MODE db "Started in 16-bit real mode", 0
-	MSG_PROT_MODE db "Loaded 32-bit protected mode", 0
+	MSG_PROT_MODE db "Switched to 32-bit protected mode", 0
 	HELLO db "HELLO", 0
 
 	TIMES 510 - ($ - $$) db 0
