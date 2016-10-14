@@ -35,7 +35,7 @@ load_kernel:
 	call print_nl
 
 	mov bx, KERNEL_OFFSET
-	mov dh, 3		; Load n sectors (excluding boot sector)
+	mov dh, 16		; Load 16 sectors (excluding boot sector)
 	mov dl, [BOOT_DRIVE]
 	call disk_load
 

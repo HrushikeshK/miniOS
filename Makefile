@@ -36,7 +36,7 @@ os-image.bin : boot/boot.bin kernel/kernel.bin
 	cat $^ > os-image.bin
 
 run : all
-	qemu-system-x86_64 os-image.bin
+	qemu-system-x86_64 -fda os-image.bin
 
 clean: 
 	rm *.bin kernel/*.o boot/*.bin boot/*.o kernel/*.bin drivers/*.o *.elf || :
