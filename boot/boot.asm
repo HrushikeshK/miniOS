@@ -1,6 +1,6 @@
-	[ORG 0x7c00]
+[ORG 0x7c00]
 
-	KERNEL_OFFSET equ 0x1000
+KERNEL_OFFSET equ 0x1000
 	
 	mov [BOOT_DRIVE], dl	; BIOS stores our boot drive in dl
 
@@ -17,7 +17,6 @@
 	call print_nl
 
 	call load_kernel 	; load kernel
-
 	call switch_to_pm
 	jmp $
 
@@ -35,7 +34,7 @@ load_kernel:
 	call print_nl
 
 	mov bx, KERNEL_OFFSET
-	mov dh, 16		; Load 16 sectors (excluding boot sector)
+	mov dh, 31		; Our future kernel will be larger, make this big
 	mov dl, [BOOT_DRIVE]
 	call disk_load
 
@@ -45,10 +44,6 @@ load_kernel:
 [bits 32]
 ; Beginning of protected mode
 BEGIN_PM:
-	mov ebx, MSG_PROT_MODE
-	mov ecx, 320	; Offset- 3rd row
-	call print_string_pm
-
 	call KERNEL_OFFSET		; jump to position where our kernel is loaded
 
 	jmp $	

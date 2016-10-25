@@ -7,8 +7,7 @@ print_string_pm:
 	pusha
 
 	mov edi, VIDEO_MEMORY
-	add edi, ecx		; write this line on the offset given by ecx register
-
+	
 print_string_pm_loop:
 	mov al, [ebx]	; ebx is the address of character
 	mov ah, WHITE_ON_BLACK

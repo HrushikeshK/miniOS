@@ -1,9 +1,9 @@
 
-C_SOURCES = $(wildcard kernel/*.c drivers/*.c)
-HEADERS = $(wildcard kernel/*.h drivers/*.h)
+C_SOURCES = $(wildcard kernel/*.c drivers/*.c cpu/*.c)
+HEADERS = $(wildcard kernel/*.h drivers/*.h cpu/*.h)
 
 # create source file names into object filenames
-OBJ = ${C_SOURCES:.c=.o}
+OBJ = ${C_SOURCES:.c=.o cpu/interrupt.o}
 
 all : os-image.bin
 
@@ -39,5 +39,5 @@ run : all
 	qemu-system-x86_64 -fda os-image.bin
 
 clean: 
-	rm *.bin kernel/*.o boot/*.bin boot/*.o kernel/*.bin drivers/*.o *.elf || :
+	rm *.bin kernel/*.o boot/*.bin boot/*.o kernel/*.bin drivers/*.o *.elf cpu/*.o || :
 	
