@@ -1,6 +1,6 @@
 #include "screen.h"
-#include "ports.h"
-#include "../kernel/util.h"
+#include "../cpu/ports.h"
+#include "../libc/mem.h"
 
 // Declaration of private functions
 int get_cursor_offset();
@@ -44,6 +44,13 @@ void kprint(char* message) {
 	kprint_at(message, -1, -1);
 }
 
+void kprint_backspace() {
+	int offset = get_cursor_offset() - 2;
+	int row = get_offset_row(offset);
+	int col = get_offset_column(offset);
+	print_char(0x08, col, row, WHITE_ON_BLACK);
+}
+
 
 /************************************
  * Private kernel functions		    *
@@ -77,7 +84,11 @@ int print_char(char c, int col, int row, char attr) {
 	if (c == '\n') {
 		row = get_offset_row(offset);
 		offset = get_offset(0, row + 1);
-	} else {
+	} else if (c == 0x08) {		// Backspace
+		vidmem[offset] = ' ';
+		vidmem[offset + 1] = attr;
+	}
+	else {
 		vidmem[offset] = c;
 		vidmem[offset+1] = attr;
 		offset += 2;
