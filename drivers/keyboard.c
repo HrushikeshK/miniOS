@@ -12,6 +12,7 @@
 #define CAPS_LOCK 	0x3A
 #define TAB 		0x0F
 
+
 static char key_buffer[256];
 
 #define SC_MAX 57
