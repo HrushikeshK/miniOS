@@ -7,13 +7,13 @@
 
 void kernel_main() {
 	kprint("Protected Mode enabled\n");
-  	kprint("Kernel Loaded\n\n");
+  	kprint("Running in kernel space\n");
  	// clear_screen();
 
   	isr_install();
   	irq_install();
 
-  	kprint("Type something, it will go through the kernel\n"
+  	kprint("\nType something, it will go through the kernel\n"
     	"Type END to halt the CPU\n> ");
 
  }
@@ -34,9 +34,13 @@ void kernel_main() {
         kprint(", physical address: ");
         kprint(phys_str);
         kprint("\n");
-    }
-
+    } else if(strcmp(input, "clear") == 0) 
+        clear_screen();
+      else if(strcmp(input,"int 0") == 0) 
+        asm volatile("int $0");
+    
 	kprint("You said: ");
 	kprint(input);
 	kprint("\n> ");
+    
 }

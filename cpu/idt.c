@@ -1,5 +1,6 @@
 #include "idt.h"
 #include "type.h"
+#include "../drivers/screen.h"
 #include <stdint.h>
 
 
@@ -16,4 +17,5 @@ void set_idt() {
 	idt_reg.limit = IDT_ENTRIES * sizeof(idt_gate_t) - 1;
 	/* Do not load &idt_register, load &idt_reg */
 	__asm__ __volatile__("lidtl (%0)" : : "r" (&idt_reg));
+	kprint("IDT Loaded\n");
 }

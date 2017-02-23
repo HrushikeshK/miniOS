@@ -4,6 +4,3 @@
 *.elf
 *.bin
 
-# Useless directories
-useless
-iso
