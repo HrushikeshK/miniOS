@@ -1,5 +1,8 @@
 # miniOS
 
+### Screenshot
+![alt text](https://github.com/HrushikeshK/miniOS/blob/master/terminal.png "Terminal")
+
 ### References:
 * [Writing Simple OS from Scratch](http://www.cs.bham.ac.uk/~exr/lectures/opsys/10_11/lectures/os-dev.pdf)
 * [OSDev forum](http://forum.osdev.org/)
