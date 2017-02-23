@@ -162,4 +162,6 @@ void irq_install() {
 
     /* IRQ1: keyboard */
     init_keyboard();
+
+    kprint("IRQ loaded\n");
 }
