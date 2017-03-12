@@ -1,4 +1,4 @@
+install: nasm qemu qemu-arch-extra
+script: make
 language: c
 compiler: gcc
-script: make
-
