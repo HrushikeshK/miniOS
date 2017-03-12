@@ -1,4 +1,7 @@
-install: nasm qemu qemu-arch-extra
+before_install: 
+apt-get -qq update
+apt-get install -y nasm qemu qemu-arch-extra
 script: make
 language: c
 compiler: gcc
+
