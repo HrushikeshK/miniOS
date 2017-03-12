@@ -1,11 +1,6 @@
 # miniOS
-==============
 
 [![Build Status](https://travis-ci.org/HrushikeshK/miniOS.svg?branch=master)](https://travis-ci.org/HrushikeshK/miniOS)
-
-
-[![Build Status](https://travis-ci.org/HrushikeshK/miniOS.svg?branch=master)](https://travis-ci.org/HrushikeshK/miniOS)
-
 
 ### Screenshot
 ![alt text](https://github.com/HrushikeshK/miniOS/blob/master/terminal.png "Terminal")
