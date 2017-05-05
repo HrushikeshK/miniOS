@@ -11,7 +11,7 @@ gdt_code:
 	dw 0xffff		; segment length, bits 0-15
 	dw 0x0			; segment base, bits 16-31
 	db 0x0			; segment base, bits 32-39
-	db 10011010b	; flags 8 bits
+	db 10011010b	; flags (Access byte) 8 bits
 	db 11001111b	; flags(4 bits) + segment length bits 48-51
 	db 0x0 			; segment base bits 56-63
 

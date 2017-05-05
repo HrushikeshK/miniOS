@@ -1,13 +1,15 @@
 #include "mem.h"
 
-void memory_copy(char* source, char* dest, int nbytes) {
+void memory_copy(char* source, char* dest, int nbytes) 
+{
 	int i; 
-	for(i = 0; i < nbytes; i++) {
+
+	for(i = 0; i < nbytes; i++) 
 		*(dest + i) = *(source + i);
-	}
 }
 
-void memory_set(uint8_t *dest, uint8_t val, uint32_t len) {
+void memory_set(uint8_t *dest, uint8_t val, uint32_t len) 
+{
 	uint8_t *temp = (uint8_t *)dest;
 	for(; len != 0; len--) *temp++ = val;
 }
@@ -18,7 +20,8 @@ void memory_set(uint8_t *dest, uint8_t val, uint32_t len) {
 uint32_t free_mem_addr = 0x10000;
 /* Implementation is just a pointer to some free memory which
  * keeps growing */
-uint32_t kmalloc(uint32_t size, int align, uint32_t *phys_addr) {
+uint32_t kmalloc(uint32_t size, int align, uint32_t *phys_addr) 
+{
     /* Pages are aligned to 4K, or 0x1000 */
     if (align == 1 && (free_mem_addr & 0xFFFFF000)) {
         free_mem_addr &= 0xFFFFF000;

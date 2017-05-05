@@ -38,7 +38,8 @@ const char sc_ascii_small[] = { '?', '?', '1', '2', '3', '4', '5', '6',
         'h', 'j', 'k', 'l', ';', '\'', '`', '?', '\\', 'z', 'x', 'c', 'v', 
         'b', 'n', 'm', ',', '.', '/', '?', '?', '?', ' '};
 
-static void keyboard_callback(registers_t regs) {
+static void keyboard_callback(registers_t regs) 
+{
 	/* The PIC leaves us the scancode in port 0x60 */
 	uint8_t scancode = port_byte_in(0x60);
 
@@ -68,7 +69,8 @@ static void keyboard_callback(registers_t regs) {
 	UNUSED(regs);
 }
 
-void init_keyboard() {
+void init_keyboard() 
+{
 	register_interrupt_handler(IRQ1, keyboard_callback);
 }
 

@@ -5,12 +5,14 @@
 
 uint32_t tick = 0;
 
-static void timer_callback(registers_t regs) {
+static void timer_callback(registers_t regs) 
+{
 	tick++;
 	UNUSED(regs);
 }
 
-void init_timer(uint32_t freq) {
+void init_timer(uint32_t freq) 
+{
 	/* Install the function we just wrote */
 	register_interrupt_handler(IRQ0, timer_callback);
 

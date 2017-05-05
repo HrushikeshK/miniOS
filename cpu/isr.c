@@ -12,7 +12,8 @@ isr_t interrupt_handlers[256];
 
 /* Can't do this with a loop because we need the address
  * of the function names */
-void isr_install() {
+void isr_install() 
+{
     set_idt_gate(0, (uint32_t)isr0);
     set_idt_gate(1, (uint32_t)isr1);
     set_idt_gate(2, (uint32_t)isr2);
@@ -120,7 +121,8 @@ char *exception_messages[] = {
 };
 
 
-void isr_handler(registers_t r) {
+void isr_handler(registers_t r) 
+{
     kprint("received interrupt: ");
     kprint_int(r.int_no);
     kprint("\n");
@@ -128,11 +130,13 @@ void isr_handler(registers_t r) {
     kprint("\n");
 }
 
-void register_interrupt_handler(uint8_t n, isr_t handler) {
+void register_interrupt_handler(uint8_t n, isr_t handler) 
+{
     interrupt_handlers[n] = handler;
 }
 
-void irq_handler(registers_t r) {
+void irq_handler(registers_t r) 
+{
     /* After every interrupt we need to send an EOI to the PICs
      * or they will not send another interrupt again. */
 
@@ -151,7 +155,8 @@ void irq_handler(registers_t r) {
     }
 }
 
-void irq_install() {
+void irq_install() 
+{
     /* Enable interrupts */
     asm volatile("sti");
 
